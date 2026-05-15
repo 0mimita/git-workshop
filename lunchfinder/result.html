@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LunchFinder</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
 <body>
     
@@ -19,9 +20,7 @@
 
         <main>
             <section class="map-selection">
-                <div class="map-placeholder">
-                    <p>Karta</p>
-                </div>
+            <div id="map"></div>
             </section>
 
             <section class="bottom-sheet">
@@ -49,10 +48,13 @@
         </main>
     </div>
 
-<script src="js/storage.js"></script>
-<script src="js/favorites.js"></script>
-<script src="js/restaurants.js"></script>
-<script src="js/map.js"></script>
+<script src="../js/storage.js"></script>
+<script src="../js/favorites.js"></script>
+<script src="../js/restaurants.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="../js/map.js"></script>
 
 </body>
 </html>
