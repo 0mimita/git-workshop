@@ -10,7 +10,7 @@
     
     <div class="container">
         <header>
-            <h1>Lunchställe</h1>
+            <h1 id="restaurant-name"></h1>
             <button class="favorite-icon">
                 ♡
             </button>
@@ -20,10 +20,12 @@
             <section class="restaurant-banner"></section>
 
             <section class="restaurant-content">
-                <div class="restaurant-title large"></div>
-                <p>4 min • 400 m • 109 kr</p>
-
-                <p>4.2 (45 omdömen)</p>
+                <div class="restaurant-title large" id="restaurant-title"></div>
+                <p id="restaurant-info"></p><p id="restaurant-type"></p>
+                <p id="restaurant-rating"></p>
+                <p id="restaurant-tags"></p>
+                <p id="restaurant-vegetarian"></p>
+                <p id="restaurant-buffet"></p>
 
                 <button class="navigation-button">
                     Starta navigation
@@ -32,24 +34,12 @@
                 <button class="save-button">
                     Spara favorit
                 </button>
-
-                <section class="menu-section">
-
-                <h2>Dagens lunch</h2>
-
-                <ul>
-
-                    <li>Lunchalternativ</li>
-                    <li>Lunchalternativ</li>
-                    <li>Lunchalternativ</li>
-
-                </ul>
-            </section>
         </main>
     </div>
 
 <script src="./js/storage.js"></script>
 <script src="./js/favorites.js"></script>
+<script src="./js/restaurant.js"></script>
 
 </body>
 </html>

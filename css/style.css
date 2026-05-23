@@ -275,16 +275,18 @@ select{
 .restaurant-card{
     display: flex;
     align-items: center;
-
     gap: 16px;
-
     background-color: #f8f8f8;
-
     padding: 16px;
-
     border-radius: 18px 18px 0 0;
-
     margin-bottom: 14px;
+    cursor: pointer;
+}
+
+.restaurant-card:hover {
+    transform: scale(1.02);
+    transition: 0.2s;
+    background-color: #c3c3c3;
 }
 
 .restaurant-image{

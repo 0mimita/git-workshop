@@ -29,6 +29,14 @@ async function getRestaurants() {
             </p>
             `;
             container.appendChild(card);
+
+            card.addEventListener("click", () => {
+                localStorage.setItem(
+                    "selectedRestaurant",
+                    JSON.stringify(restaurant)
+                );
+                window.location.href = "restaurant.html";  
+            });
         });
 
     } catch(error) {
