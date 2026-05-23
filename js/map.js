@@ -28,3 +28,31 @@ L.marker([latitude, longitude])
 .bindPopup("Din position")
 
 .openPopup();
+
+async function showRestaurantsOnMap() {
+
+    const response = await fetch(
+        `https://smapi.lnu.se/api/?api_key=3bdTk4Bn&controller=food&method=getfromlatlng&lat=${latitude}&lng=${longitude}&radius=5`
+    );
+
+    const data = await response.json();
+
+    data.payload.forEach((restaurant) => {
+
+        L.marker([
+            parseFloat(restaurant.lat),
+            parseFloat(restaurant.lng)
+        ])
+
+        .addTo(map)
+
+        .bindPopup(`
+            <b>${restaurant.name}</b><br>
+            ${restaurant.rating}
+        `);
+
+    });
+
+}
+
+showRestaurantsOnMap();
