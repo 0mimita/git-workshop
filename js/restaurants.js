@@ -1,3 +1,7 @@
+const filters = JSON.parse(localStorage.getItem("filters"));
+
+console.log(filters);
+
 const userLatitude = localStorage.getItem("latitude");
 const userLongitude = localStorage.getItem("longitude");
 
