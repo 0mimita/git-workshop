@@ -288,7 +288,7 @@ select{
 .restaurant-card:hover {
     transform: scale(1.02);
     transition: 0.2s;
-    background-color: #c3c3c3;
+    background-color: #d2b7b7;
 }
 
 .restaurant-image{
