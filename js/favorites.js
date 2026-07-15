@@ -9,12 +9,12 @@ function saveFavorites(favorites) {
 
 function isFavorite(restaurantId) {
     const favorites = getFavorites();
-    return favorites.some(item => item.id === restaurantId);
+    return favorites.some(item => item.id_establishment === restaurantId);
 }
 
 function toggleFavorite(restaurant) {
     let favorites = getFavorites();
-    const index = favorites.findIndex(item => item.id === restaurant.id);
+    const index = favorites.findIndex(item => item.id_establishment === restaurant.id_establishment);
 
     if (index !== -1) {
         favorites.splice(index, 1);
@@ -23,14 +23,15 @@ function toggleFavorite(restaurant) {
     }
     saveFavorites(favorites);
     updateSaveButton();
+    renderFavorites();
 }
 
 function updateSaveButton() {
     const saveBtn = document.querySelector(".save-button");
     const selectedRestaurant = JSON.parse(localStorage.getItem("selectedRestaurant"));
 
-    if (saveBtn &&selectedRestaurant) {
-        const fav = isFavorite(selectedRestaurant.id);
+    if (saveBtn && selectedRestaurant) {
+        const fav = isFavorite(selectedRestaurant.id_establishment);
         saveBtn.textContent = fav ? "Ta bort favorit" : "Spara favorit";
         saveBtn.classList.toggle("is-active", fav);
 
