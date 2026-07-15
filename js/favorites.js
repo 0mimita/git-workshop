@@ -28,22 +28,22 @@ function toggleFavorite(restaurant) {
 
 function updateSaveButton() {
     const saveBtn = document.querySelector(".save-button");
+    const headerFavBtn = document.querySelector(".favorite-icon");
     const selectedRestaurant = JSON.parse(localStorage.getItem("selectedRestaurant"));
 
-    if (saveBtn && selectedRestaurant) {
+    if (selectedRestaurant) {
         const fav = isFavorite(selectedRestaurant.id);
-        saveBtn.textContent = fav ? "Ta bort favorit" : "Spara favorit";
-        saveBtn.classList.toggle("is-active", fav);
-
-        if (headerFavBtn) {
-            headerFavBtn.textContent = fav ? "♥" : "♡";
-            headerFavBtn.classList.toggle("is-active", fav);
-        }
 
         if (saveBtn) {
             saveBtn.textContent = fav ? "Ta bort favorit" : "Spara favorit";
             saveBtn.classList.toggle("is-active", fav);
         }
+
+        if (headerFavBtn) {
+            headerFavBtn.textContent = fav ? "♥" : "♡";
+            headerFavBtn.classList.toggle("is-active", fav);
+        }
+    }
     }
 
     function renderFavorites() {
@@ -97,4 +97,4 @@ if (backBtn) {
     backBtn.addEventListener("click", () => {
         window.history.back();
     });
-}};
+};
