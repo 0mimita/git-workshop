@@ -57,17 +57,26 @@ function updateSaveButton() {
             return;
         }
 
-        container.innerHTML = "";
         favorites.forEach(restaurant => {
             const card = document.createElement("div");
             card.classList.add("restaurant-card)");
+
             card.innerHTML = `
-            <h2>${restaurant.name}</h2>
-            <p>
-            ${restaurant.distance_in_km ? restaurant.distance_in_km.toFixed(1) + " km • " : ""}
-            ${restaurant.avg_lunch_pricing} kr
-            </p>
+            <div class="card-info">
+                <h2>${restaurant.name}</h2>
+                <p>
+                    ${restaurant.distance_in_km ? Number(restaurant.distance_in_km).toFixed(1) + " km • " : ""}
+                    ${restaurant.avg_lunch_pricing} kr
+                </p>
+            </div>
+            <button class="remove-favorite-button">"Ta bort favorit">x</button>
             `;
+
+            const removeBtn = card.querySelector(".remove-favorite-button");
+            removeBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                toggleFavorite(restaurant);
+            });
 
             card.addEventListener("click", () => {
                 localStorage.setItem("selectedRestaurant", JSON.stringify(restaurant));
@@ -79,6 +88,7 @@ function updateSaveButton() {
 
     document.addEventListener("DOMContentLoaded", () => {
         updateSaveButton();
+        renderFavorites();
 
         const saveBtn = document.querySelector(".save-button");
         if (saveBtn) {
