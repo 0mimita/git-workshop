@@ -91,6 +91,11 @@ header h1 {
     text-align: center;
 }
 
+.card-info {
+    flex: 1;
+    text-align: left;
+}
+
 .plats-icon {
     width: 60px;
     height: 60px;
@@ -220,7 +225,6 @@ header h1 {
 }
 
 
-
 .filter-section {
     margin-bottom: 35px;
 }
@@ -295,11 +299,11 @@ select {
     cursor: pointer;
 }
 
-.remove-favorite-btn {
+.remove-favorite-button {
     color: #888;
     background: transparent;
     border: none;
-    padding: 8px 12px;
+    padding: 0px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.5rem;
@@ -310,10 +314,9 @@ select {
 
 }
 
-.remove-favorite-btn:hover {
+.remove-favorite-button:hover {
     transform: scale(1.15);
-    background-color: rgb(165, 50, 69);
-    color:rgb(145, 57, 71);
+    
 }
 .restaurant-card:hover {
     transform: scale(1.02);
@@ -402,11 +405,6 @@ select {
 
 @media(max-width: 600px) {
 
-    .restaurant-card{
-        flex-direction: column;
-
-        text-align: center;
-    }
 
     .filter-grid{
         flex-direction: column;
