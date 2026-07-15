@@ -31,7 +31,7 @@ function updateSaveButton() {
     const selectedRestaurant = JSON.parse(localStorage.getItem("selectedRestaurant"));
 
     if (saveBtn && selectedRestaurant) {
-        const fav = isFavorite(selectedRestaurant.id_establishment);
+        const fav = isFavorite(selectedRestaurant.id);
         saveBtn.textContent = fav ? "Ta bort favorit" : "Spara favorit";
         saveBtn.classList.toggle("is-active", fav);
 
