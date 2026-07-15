@@ -9,12 +9,12 @@ function saveFavorites(favorites) {
 
 function isFavorite(restaurantId) {
     const favorites = getFavorites();
-    return favorites.some(item => item.id_establishment === restaurantId);
+    return favorites.some(item => item.id === restaurantId);
 }
 
 function toggleFavorite(restaurant) {
     let favorites = getFavorites();
-    const index = favorites.findIndex(item => item.id_establishment === restaurant.id_establishment);
+    const index = favorites.findIndex(item => item.id === restaurant.id);
 
     if (index !== -1) {
         favorites.splice(index, 1);
