@@ -69,7 +69,7 @@ function updateSaveButton() {
                     ${restaurant.avg_lunch_pricing} kr
                 </p>
             </div>
-            <button class="remove-favorite-button">"Ta bort favorit">x</button>
+            <button class="remove-favorite-button" title="Ta bort favorit">x</button>
             `;
 
             const removeBtn = card.querySelector(".remove-favorite-button");
