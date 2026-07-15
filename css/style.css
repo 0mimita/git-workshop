@@ -34,9 +34,18 @@ header h1{
 .favorite-icon{
     border: none;
     background: none;
-
     font-size: 2rem;
     cursor: pointer;
+    color: #6a5a5a;
+    user-select: none;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.favorite-icon.is-active {
+    color: rgb(145, 57, 71);
+    filter: drop-shadow(0 2px 6px rgba(145, 57, 71, 0.5));
+    transform: scale(1.2);
 }
 
 .hero-section{
