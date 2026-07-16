@@ -1,49 +1,27 @@
 const buttons = document.querySelectorAll(".filter-grid button");
 
 buttons.forEach((button) => {
-
     button.addEventListener("click", () => {
-        
         button.classList.toggle("selected");
 
-        let selectedFilters = localStorage.getItem("filters");
+        const selectedButtons = document.querySelectorAll(".filter-grid button.selected");
+        const subTypes = [];
+        const priceRanges = [];
 
-        if (selectedFilters === null) {
-            selectedFilters = [];
-        } else {
-            selectedFilters = JSON.parse(selectedFilters);
-        }
-
-        const value = button.textContent;
-
-        let alreadySelected = false;
-
-        for (let i = 0; i < selectedFilters.length; i++) {
-            if (selectedFilters[i] === value) {
-                alreadySelected = true;
+        selectedButtons.forEach((btn) => {
+            const value = btn.getAttribute("data-value");
+            
+            if (value === "$" || value === "$$" || value === "$$$") {
+                priceRanges.push(value);
+            } else {
+                subTypes.push(value);
             }
-        }
+        });
 
-        if (alreadySelected === true) {
-            let newArray = [];
+        localStorage.setItem("sub_types", JSON.stringify(subTypes));
+        localStorage.setItem("price_ranges", JSON.stringify(priceRanges));
 
-            for (let i = 0; i < selectedFilters.length; i++) {
-                if (selectedFilters[i] !== value) {
-                    newArray.push(selectedFilters[i]);
-                }
-        }
-        selectedFilters = newArray;
-    } else {
-        selectedFilters.push(value);
-    }
-
-    localStorage.setItem(
-        "filters",
-        JSON.stringify(selectedFilters)
-    );
-
-    console.log(selectedFilters);
-
+        console.log("Subtypes:", subTypes);
+        console.log("Prices:", priceRanges);
     });
-    
 });

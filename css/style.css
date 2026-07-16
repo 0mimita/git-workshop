@@ -242,6 +242,11 @@ header h1{
     cursor: pointer;
 }
 
+.filter-grid button.selected {
+    background-color: #f9c4d9; 
+    border: 2px solid #ffffff; 
+}
+
 select{
     width: 100%;
 
