@@ -1,3 +1,5 @@
+const resultButton = document.querySelector(".result-button");
+const distanceError = document.getElementById("distance-error");
 const buttons = document.querySelectorAll(".filter-grid button");
 
 const distanceFilter = document.getElementById("distance-filter");
@@ -15,27 +17,36 @@ if (distanceFilter) {
 }
 
 buttons.forEach((button) => {
-  button.addEventListener("click", () => {
-    button.classList.toggle("selected");
+    button.addEventListener("click", () => {
+        button.classList.toggle("selected");
+    });
+});
 
-    const selectedButtons = document.querySelectorAll(
-      ".filter-grid button.selected",
-    );
+resultButton.addEventListener("click", (event) => {
+
+    if (!distanceFilter.value) {
+        event.preventDefault();
+        distanceError.style.display = "block";
+        return;
+    }
+
+    distanceError.style.display = "none";
+
+    const selectedButtons = document.querySelectorAll(".filter-grid button.selected");
 
     const subTypes = [];
     const priceRanges = [];
 
     selectedButtons.forEach((btn) => {
-      const value = btn.dataset.value || btn.textContent.trim();
+        const value = btn.dataset.value || btn.textContent.trim();
 
-      if (value === "$" || value === "$$" || value === "$$$") {
-        priceRanges.push(value);
-      } else {
-        subTypes.push(value);
-      }
+        if (value === "$" || value === "$$" || value === "$$$") {
+            priceRanges.push(value);
+        } else {
+            subTypes.push(value);
+        }
     });
 
     localStorage.setItem("sub_types", JSON.stringify(subTypes));
     localStorage.setItem("price_ranges", JSON.stringify(priceRanges));
-  });
 });
