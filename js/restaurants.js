@@ -3,6 +3,7 @@ async function getRestaurants() {
   const longitude = localStorage.getItem("longitude");
   const subTypes = JSON.parse(localStorage.getItem("sub_types")) || [];
   const priceRanges = JSON.parse(localStorage.getItem("price_ranges")) || [];
+  const maxDistance = Number(localStorage.getItem("distance")) || 5;
   const container = document.getElementById("restaurants-container");
 
   container.innerHTML = "";
@@ -34,6 +35,10 @@ async function getRestaurants() {
         return false;
       });
     }
+
+    restaurants = restaurants.filter((restaurant) => {
+    return Number(restaurant.distance_in_km) <= maxDistance;
+    });
 
     restaurants.sort((a, b) => parseFloat(a.distance_in_km) - parseFloat(b.distance_in_km));
 

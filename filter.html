@@ -1,66 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LunchFinder</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <h1>Filter</h1>
-            <a href="favorites.html" class="favorite-icon">♡</a>
-        </header>
+      <header>
+        <h1>Filter</h1>
+        <a href="favorites.html" class="favorite-icon">♡</a>
+      </header>
 
-        <main>
-            <section class="filter-section">
-                <h2>Vad är du sugen på?</h2>
+      <main>
+        <section class="filter-section">
+          <h2>Vad är du sugen på?</h2>
 
-                <div class="filter-grid">
-
+          <div class="filter-grid">
             <button data-value="LOCAL">Husman</button>
             <button data-value="ASIAN">Asiatiskt</button>
             <button data-value="PIZZA">Pizza</button>
             <button data-value="BURGERS">Burgare</button>
             <button data-value="MEDITERRANEAN">Medelhavs</button>
+          </div>
+        </section>
 
-                </div>
-            </section>
+        <section class="filter-section">
+          <h2>Pris</h2>
 
-            <section class="filter-section">
-                <h2>Pris</h2>
+          <div class="filter-grid">
+            <button>$</button>
+            <button>$$</button>
+            <button>$$$</button>
+          </div>
+        </section>
 
-                <div class="filter-grid">
-                    <button>$</button>
-                    <button>$$</button>
-                    <button>$$$</button>
+        <section class="filter-section">
+          <h2>Avstånd</h2>
 
-                </div>
-            </section>
+          <select id="distance-filter">
+            <option value="">Välj avstånd</option>
+            <option value="0.5">Inom 500 m</option>
+            <option value="2">Inom 2 km</option>
+            <option value="5">Inom 5 km</option>
+          </select>
+        </section>
 
-            <section class="filter-section">
-                <h2>Avstånd</h2>
-
-                <select>
-                    <option>Inom 500 m</option>
-                    <option>Inom 2 km</option>
-                    <option>Inom 5 km</option>   
-                </select>
-
-            </section>
-
-            <a href="result.html">
-                <button class="result-button">
-                    Visa resultat
-                </button>
-            </a>
-
-        </main>
+        <a href="result.html">
+          <button class="result-button">Visa resultat</button>
+        </a>
+      </main>
     </div>
 
     <script src="./js/filter.js"></script>
-
-</body>
+  </body>
 </html>
