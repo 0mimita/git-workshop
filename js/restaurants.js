@@ -1,40 +1,69 @@
-const filters = JSON.parse(localStorage.getItem("filters"));
-const userLatitude = localStorage.getItem("latitude");
-const userLongitude = localStorage.getItem("longitude");
-
 async function getRestaurants() {
-    const subTypes = JSON.parse(localStorage.getItem("sub_types")) || [];
-    const userLatitude = localStorage.getItem("latitude");
-    const userLongitude = localStorage.getItem("longitude");
+  const latitude = localStorage.getItem("latitude");
+  const longitude = localStorage.getItem("longitude");
+  const subTypes = JSON.parse(localStorage.getItem("sub_types")) || [];
+  const priceRanges = JSON.parse(localStorage.getItem("price_ranges")) || [];
+  const container = document.getElementById("restaurants-container");
 
-    let apiUrl = `https://smapi.lnu.se/api/?api_key=3bdTk4Bn&controller=food&method=getfromlatlng&lat=${userLatitude}&lng=${userLongitude}&radius=5`;
+  container.innerHTML = "";
 
-    try {
-        const response = await fetch(apiUrl);
-        const data = await response.json();
-        let restaurants = data.payload || [];
+  const apiUrl = `https://smapi.lnu.se/api/?api_key=3bdTk4Bn&controller=food&method=getfromlatlng&lat=${latitude}&lng=${longitude}&radius=5`;
 
-        if (subTypes.length > 0) {
-            restaurants = restaurants.filter(r => subTypes.includes(r.sub_type));
-        }
+  try {
+    const response = await fetch(apiUrl);
+    const data = await response.json();
 
-        const container = document.getElementById("restaurants-container");
-        container.innerHTML = "";
+    let restaurants = data.payload || [];
 
-        if (restaurants.length > 0) {
-            restaurants.forEach((restaurant) => {
-                const card = document.createElement("div");
-                card.classList.add("restaurant-card");
-                card.innerHTML = ` 
-                    <h2>${restaurant.name}</h2>
-                    <p>${restaurant.distance_in_km.toFixed(1)} km</p>
-                `;
-                container.appendChild(card);
-            });
-        } else {
-            container.innerHTML = "<p>Inga restauranger matchar dina val.</p>";
-        }
-    } catch(error) {
-        console.error("API-fel:", error);
+    if (subTypes.length > 0) {
+      restaurants = restaurants.filter((r) => {
+        if (!r.sub_type) return false;
+        return subTypes.includes(r.sub_type);
+      });
     }
+
+    if (priceRanges.length > 0) {
+      restaurants = restaurants.filter((r) => {
+        const price = parseInt(r.avg_lunch_pricing);
+
+        if (isNaN(price)) return true;
+        if (priceRanges.includes("$") && price < 100) return true;
+        if (priceRanges.includes("$$") && price >= 100 && price <= 150) return true;
+        if (priceRanges.includes("$$$") && price > 150) return true;
+
+        return false;
+      });
+    }
+
+    restaurants.sort((a, b) => parseFloat(a.distance_in_km) - parseFloat(b.distance_in_km));
+
+    if (restaurants.length === 0) {
+      container.innerHTML = "<p>Inga restauranger matchar dina val.</p>";
+      return;
+    }
+
+    restaurants.forEach((restaurant) => {
+      const card = document.createElement("div");
+      card.className = "restaurant-card";
+
+      card.innerHTML = `
+        <div class="card-info">
+          <h2>${restaurant.name}</h2>
+          <p>${Number(restaurant.distance_in_km).toFixed(1)} km • ${restaurant.avg_lunch_pricing} kr</p>
+        </div>
+      `;
+
+      card.addEventListener("click", () => {
+        localStorage.setItem("selectedRestaurant", JSON.stringify(restaurant));
+        window.location.href = "restaurant.html";
+      });
+
+      container.appendChild(card);
+    });
+  } catch (error) {
+    console.error(error);
+    container.innerHTML = "<p>Kunde inte hämta restauranger.</p>";
+  }
 }
+
+getRestaurants();

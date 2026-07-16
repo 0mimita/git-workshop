@@ -37,7 +37,29 @@ async function showRestaurantsOnMap() {
 
     const data = await response.json();
 
-    data.payload.forEach((restaurant) => {
+    const subTypes = JSON.parse(localStorage.getItem("sub_types")) || [];
+const priceRanges = JSON.parse(localStorage.getItem("price_ranges")) || [];
+
+let restaurants = data.payload || [];
+
+if (subTypes.length > 0) {
+    restaurants = restaurants.filter(r => subTypes.includes(r.sub_type));
+}
+
+if (priceRanges.length > 0) {
+    restaurants = restaurants.filter(r => {
+        const price = parseInt(r.avg_lunch_pricing);
+
+        if (isNaN(price)) return true;
+        if (priceRanges.includes("$") && price < 100) return true;
+        if (priceRanges.includes("$$") && price >= 100 && price <= 150) return true;
+        if (priceRanges.includes("$$$") && price > 150) return true;
+
+        return false;
+    });
+}
+
+    restaurants.forEach((restaurant) => {
 
         L.marker([
             parseFloat(restaurant.lat),

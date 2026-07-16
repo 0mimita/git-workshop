@@ -22,48 +22,90 @@ function toggleFavorite(restaurant) {
         favorites.push(restaurant);
     }
     saveFavorites(favorites);
-    updateFavoriteUI();
+    updateSaveButton();
+    renderFavorites();
 }
 
-function updateFavoriteUI() {
-    const headerFavBtn = document.querySelector("header .favorite-icon");
+function updateSaveButton() {
     const saveBtn = document.querySelector(".save-button");
+    const headerFavBtn = document.querySelector(".favorite-icon");
     const selectedRestaurant = JSON.parse(localStorage.getItem("selectedRestaurant"));
 
     if (selectedRestaurant) {
         const fav = isFavorite(selectedRestaurant.id);
 
-        if (headerFavBtn) {
-            headerFavBtn.textContent = fav ? "♥" : "♡";
-            headerFavBtn.classList.toggle("is-active", fav);
-        }
-
         if (saveBtn) {
             saveBtn.textContent = fav ? "Ta bort favorit" : "Spara favorit";
             saveBtn.classList.toggle("is-active", fav);
         }
+
+        if (headerFavBtn) {
+            headerFavBtn.textContent = fav ? "♥" : "♡";
+            headerFavBtn.classList.toggle("is-active", fav);
+        }
     }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    updateFavoriteUI();
-
-    const saveBtn = document.querySelector(".save-button");
-    if (saveBtn) {
-        saveBtn.addEventListener("click", () => {
-            const selectedRestaurant = JSON.parse(localStorage.getItem("selectedRestaurant"));
-            if (selectedRestaurant) {
-                toggleFavorite(selectedRestaurant);
-            }
-        })
     }
 
-    const headerFavBtn = document.querySelector("header .favorite-icon");
-    if (headerFavBtn) {
-        headerFavBtn.addEventListener("click", () => {
-            if (selectedRestaurant) {
-                toggleFavorite(selectedRestaurant);
-            }
-        })
+    function renderFavorites() {
+        const container = document.getElementById("favorites-container");
+
+        if (!container) return;
+
+        const favorites = getFavorites();
+        if (favorites.length === 0) {
+            container.innerHTML = "<p>Inga favoriter sparade</p>";
+            return;
+        }
+
+        favorites.forEach(restaurant => {
+            const card = document.createElement("div");
+            card.classList.add("restaurant-card)");
+
+            card.innerHTML = `
+            <div class="card-info">
+                <h2>${restaurant.name}</h2>
+                <p>
+                    ${restaurant.distance_in_km ? Number(restaurant.distance_in_km).toFixed(1) + " km • " : ""}
+                    ${restaurant.avg_lunch_pricing} kr
+                </p>
+            </div>
+
+            <button class="remove-favorite-button" title="Ta bort favorit">x</button>
+            `;
+
+            const removeBtn = card.querySelector(".remove-favorite-button");
+            removeBtn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                toggleFavorite(restaurant);
+            });
+
+            card.addEventListener("click", () => {
+                localStorage.setItem("selectedRestaurant", JSON.stringify(restaurant));
+                window.location.href = "restaurant.html";
+            });
+            container.appendChild(card);
+        });
     }
-});
+
+    document.addEventListener("DOMContentLoaded", () => {
+        updateSaveButton();
+        renderFavorites();
+
+        const saveBtn = document.querySelector(".save-button");
+        if (saveBtn) {
+            saveBtn.addEventListener("click", () => {
+                const selectedRestaurant = JSON.parse(localStorage.getItem("selectedRestaurant"));
+                if (selectedRestaurant) {
+                    toggleFavorite(selectedRestaurant);
+                }
+            });
+        }
+    });
+
+const backBtn = document.getElementById("back-button");
+
+if (backBtn) {
+    backBtn.addEventListener("click", () => {
+        window.history.back();
+    });
+};
