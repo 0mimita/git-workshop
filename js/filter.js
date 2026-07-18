@@ -1,49 +1,52 @@
+const resultButton = document.querySelector(".result-button");
+const distanceError = document.getElementById("distance-error");
 const buttons = document.querySelectorAll(".filter-grid button");
 
+const distanceFilter = document.getElementById("distance-filter");
+
+if (distanceFilter) {
+  const savedDistance = localStorage.getItem("distance");
+
+  if (savedDistance) {
+    distanceFilter.value = savedDistance;
+  }
+
+  distanceFilter.addEventListener("change", () => {
+    localStorage.setItem("distance", distanceFilter.value);
+  });
+}
+
 buttons.forEach((button) => {
-
     button.addEventListener("click", () => {
-        
         button.classList.toggle("selected");
+    });
+});
 
-        let selectedFilters = localStorage.getItem("filters");
+resultButton.addEventListener("click", (event) => {
 
-        if (selectedFilters === null) {
-            selectedFilters = [];
-        } else {
-            selectedFilters = JSON.parse(selectedFilters);
-        }
-
-        const value = button.textContent;
-
-        let alreadySelected = false;
-
-        for (let i = 0; i < selectedFilters.length; i++) {
-            if (selectedFilters[i] === value) {
-                alreadySelected = true;
-            }
-        }
-
-        if (alreadySelected === true) {
-            let newArray = [];
-
-            for (let i = 0; i < selectedFilters.length; i++) {
-                if (selectedFilters[i] !== value) {
-                    newArray.push(selectedFilters[i]);
-                }
-        }
-        selectedFilters = newArray;
-    } else {
-        selectedFilters.push(value);
+    if (!distanceFilter.value) {
+        event.preventDefault();
+        distanceError.style.display = "block";
+        return;
     }
 
-    localStorage.setItem(
-        "filters",
-        JSON.stringify(selectedFilters)
-    );
+    distanceError.style.display = "none";
 
-    console.log(selectedFilters);
+    const selectedButtons = document.querySelectorAll(".filter-grid button.selected");
 
+    const subTypes = [];
+    const priceRanges = [];
+
+    selectedButtons.forEach((btn) => {
+        const value = btn.dataset.value || btn.textContent.trim();
+
+        if (value === "$" || value === "$$" || value === "$$$") {
+            priceRanges.push(value);
+        } else {
+            subTypes.push(value);
+        }
     });
-    
+
+    localStorage.setItem("sub_types", JSON.stringify(subTypes));
+    localStorage.setItem("price_ranges", JSON.stringify(priceRanges));
 });

@@ -1,33 +1,17 @@
-const latitude =
-localStorage.getItem("latitude");
+const latitude = localStorage.getItem("latitude");
+const longitude = localStorage.getItem("longitude");
 
-const longitude =
-localStorage.getItem("longitude");
+const map = L.map("map").setView([latitude, longitude], 15);
 
-const map =
-L.map('map').setView(
-    [latitude, longitude],
-    15
-);
-
-L.tileLayer(
-    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-    {
-        maxZoom: 19,
-
-        attribution:
-        '&copy; OpenStreetMap'
-    }
-
-).addTo(map);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap"
+}).addTo(map);
 
 L.marker([latitude, longitude])
-
-.addTo(map)
-
-.bindPopup("Din position")
-
-.openPopup();
+    .addTo(map)
+    .bindPopup("Din position")
+    .openPopup();
 
 async function showRestaurantsOnMap() {
 
@@ -37,20 +21,50 @@ async function showRestaurantsOnMap() {
 
     const data = await response.json();
 
-    data.payload.forEach((restaurant) => {
+    const subTypes = JSON.parse(localStorage.getItem("sub_types")) || [];
+    const priceRanges = JSON.parse(localStorage.getItem("price_ranges")) || [];
+    const maxDistance = Number(localStorage.getItem("distance")) || 5;
 
+    let restaurants = data.payload || [];
+
+    if (subTypes.length > 0) {
+        restaurants = restaurants.filter((r) => {
+            if (!r.sub_type) return false;
+            return subTypes.includes(r.sub_type);
+        });
+    }
+
+    if (priceRanges.length > 0) {
+        restaurants = restaurants.filter((r) => {
+            const price = parseInt(r.avg_lunch_pricing);
+
+            if (isNaN(price)) return true;
+            if (priceRanges.includes("$") && price < 100) return true;
+            if (priceRanges.includes("$$") && price >= 100 && price <= 150) return true;
+            if (priceRanges.includes("$$$") && price > 150) return true;
+
+            return false;
+        });
+    }
+
+    restaurants = restaurants.filter((restaurant) => {
+        return Number(restaurant.distance_in_km) <= maxDistance;
+    });
+
+    restaurants.sort((a, b) => {
+        return parseFloat(a.distance_in_km) - parseFloat(b.distance_in_km);
+    });
+
+    restaurants.forEach((restaurant) => {
         L.marker([
             parseFloat(restaurant.lat),
             parseFloat(restaurant.lng)
         ])
-
         .addTo(map)
-
         .bindPopup(`
             <b>${restaurant.name}</b><br>
             ${restaurant.rating}
         `);
-
     });
 
 }
