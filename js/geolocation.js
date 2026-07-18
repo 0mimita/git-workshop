@@ -16,7 +16,8 @@ locationButton.addEventListener("click", () => {
         console.log(position.coords.latitude);
         console.log(position.coords.longitude);
        
-        window.location.href = "filter.html";          
+        window.location.href = "filter.html";
+        
 
         },
 
