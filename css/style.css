@@ -34,16 +34,26 @@ header h1 {
 .favorite-icon {
     border: none;
     background: none;
-    font-size: 2rem;
     cursor: pointer;
-    color: #6a5a5a;
+    padding: 0;
     user-select: none;
-    display: inline-block;
+    display: inline-flex;
     text-decoration: none;
+    justify-content: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.favorite-icon:hover {
+    opacity: 2.0;
+}
+
+.favorite-icon img {
+    height: 32px;
+    width: 32px;
+    display: block;
 }
 
 .favorite-icon.is-active {
-    color: rgb(145, 57, 71);
     filter: drop-shadow(0 2px 6px rgba(145, 57, 71, 0.5));
     transform: scale(1.2);
 }
@@ -423,4 +433,24 @@ select {
     color: rgb(145, 57, 71);
     transform: scale(1.2);
     transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.icon-header {
+    height: 24px;
+    width: 24px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.icon-small {
+    height: 16px;
+    width: 16px;
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.restaurant-details {
+    gap: 4px;
+    display: inline-flex;
+    align-items: center;
 }
