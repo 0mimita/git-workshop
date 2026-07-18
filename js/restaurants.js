@@ -54,6 +54,7 @@ async function getRestaurants() {
       card.innerHTML = `
         <div class="card-info">
           <h2>${restaurant.name}</h2>
+          <img src="images/location-icon.svg" alt="Plats" class="icon-small">
           <p>${Number(restaurant.distance_in_km).toFixed(1)} km • ${restaurant.avg_lunch_pricing} kr</p>
         </div>
       `;
@@ -61,6 +62,7 @@ async function getRestaurants() {
       card.addEventListener("click", () => {
         localStorage.setItem("selectedRestaurant", JSON.stringify(restaurant));
         window.location.href = "restaurant.html";
+        
       });
 
       container.appendChild(card);
