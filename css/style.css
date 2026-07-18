@@ -23,8 +23,29 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
+    padding: 15px 20px;
     margin-bottom: 50px;
+    gap: 15px;
+}
+
+.back-navigation {
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+}
+
+.back-navigation img {
+    height: 24px;
+    width: 24px;
+    display: block;
+}
+
+.back-navigation:active img {
+    transform: scale(0.9);
 }
 
 header h1 {
