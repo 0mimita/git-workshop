@@ -29,3 +29,8 @@ document.getElementById("restaurant-vegetarian").textContent =
 selectedRestaurant.vegetarian_option === "Y"
 ? "Vegetariska alternativ finns"
 : "Inga vegetariska alternativ";
+
+const backBtn = document.getElementById("back-button");
+backBtn.addEventListener("click", () => {
+    window.history.back();
+});
