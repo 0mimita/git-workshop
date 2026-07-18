@@ -67,7 +67,7 @@ function updateSaveButton() {
             card.innerHTML = `
             <div class="card-info">
                 <h2>${restaurant.name}</h2>
-                <p>
+                <p class="restaurant-details">
                     ${restaurant.distance_in_km ? Number(restaurant.distance_in_km).toFixed(1) + " km • " : ""}
                     ${restaurant.avg_lunch_pricing} kr
                 </p>
