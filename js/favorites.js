@@ -40,7 +40,9 @@ function updateSaveButton() {
         }
 
         if (headerFavBtn) {
-            headerFavBtn.textContent = fav ? "♥" : "♡";
+            headerFavBtn.innerHTML = fav 
+            ? "<img src='images/heart-icon2.svg' alt='Favorit' class='icon-small'>" 
+            : "<img src='images/heart-icon.svg' alt='Inte favorit' class='icon-small'>";
             headerFavBtn.classList.toggle("is-active", fav);
         }
     }
