@@ -50,6 +50,7 @@ function updateSaveButton() {
         const container = document.getElementById("favorites-container");
 
         if (!container) return;
+        container.innerHTML = "";
 
         const favorites = getFavorites();
         if (favorites.length === 0) {
@@ -59,7 +60,7 @@ function updateSaveButton() {
 
         favorites.forEach(restaurant => {
             const card = document.createElement("div");
-            card.classList.add("restaurant-card)");
+            card.classList.add("restaurant-card");
 
             card.innerHTML = `
             <div class="card-info">
