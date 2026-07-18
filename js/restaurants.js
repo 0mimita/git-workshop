@@ -74,3 +74,8 @@ async function getRestaurants() {
 }
 
 getRestaurants();
+
+const backBtn = document.getElementById("back-button");
+  backBtn.addEventListener("click", () => {
+    window.history.back();
+  });
