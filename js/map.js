@@ -59,7 +59,7 @@ async function showRestaurantsOnMap() {
         L.marker([
             parseFloat(restaurant.lat),
             parseFloat(restaurant.lng)
-        ])
+        ], )
         .addTo(map)
         .bindPopup(`
             <b>${restaurant.name}</b><br>
