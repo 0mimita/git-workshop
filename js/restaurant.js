@@ -34,3 +34,19 @@ const backBtn = document.getElementById("back-button");
 backBtn.addEventListener("click", () => {
     window.history.back();
 });
+
+const navBtn = document.querySelector(".navigation-button");
+navBtn.addEventListener("click", () => {
+    const userLat = localStorage.getItem("latitude");
+    const userLng = localStorage.getItem("longitude");
+    const restLat = selectedRestaurant.latitude || selectedRestaurant.lat;
+    const restLng = selectedRestaurant.longitude || selectedRestaurant.lng;
+
+    if (userLat && userLng && restLat && restLng) {
+        const googleMapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${userLat},${userLng}&destination=${restLat},${restLng}`;
+        window.open(googleMapsUrl, "_blank");
+    } else {
+        const fallbackUrl = `https://www.google.com/maps/dir/?api=1&destination=${restLat},${restLng}`;
+        window.open(fallbackUrl, "_blank");
+    }
+});
