@@ -475,3 +475,38 @@ select {
     display: block;
 }
 
+.price-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.tooltip {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background-color: #6a5a5a;
+    color: white;
+    text-align: center;
+    line-height: 18px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.tooltip-text {
+    display: none;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    background: white;
+    color: black;
+    padding: 8px;
+    border-radius: 10px;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.tooltip:hover .tooltip-text {
+    display: block;
+}
