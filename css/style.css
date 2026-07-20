@@ -217,6 +217,13 @@ header h1 {
     line-height: 1.5;
 }
 
+.clock-icon {
+
+    height: 32px;
+    width: 32px;
+    flex-shrink: 0;
+}
+
 /* TABLET */
 
 @media(max-width: 900px) {
