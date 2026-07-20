@@ -1,3 +1,14 @@
+function getPriceLevel(price) {
+    price = Number(price);
+    if (price < 100) {
+        return "$";
+    } else if (price <= 150) {
+        return "$$";
+    } else {
+        return "$$$";
+    }
+}
+
 const selectedRestaurant =JSON.parse(
     localStorage.getItem("selectedRestaurant")
 );
@@ -9,7 +20,7 @@ document.getElementById("restaurant-name").textContent = selectedRestaurant.name
 document.getElementById("restaurant-title").textContent = selectedRestaurant.description;
 
 document.getElementById("restaurant-info").textContent =
-`${selectedRestaurant.distance_in_km.toFixed(1)} km • ${selectedRestaurant.avg_lunch_pricing} kr`;
+`${selectedRestaurant.distance_in_km.toFixed(1)} km • ${getPriceLevel(selectedRestaurant.avg_lunch_pricing)}`;
 
 document.getElementById("restaurant-rating").textContent =
 `${selectedRestaurant.rating} (${selectedRestaurant.num_reviews} omdömen)`;

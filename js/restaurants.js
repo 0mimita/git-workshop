@@ -1,3 +1,14 @@
+function getPriceLevel(price) {
+    price = Number(price);
+    if (price < 100) {
+        return "$";
+    } else if (price <= 150) {
+        return "$$";
+    } else {
+        return "$$$";
+    }
+}
+
 async function getRestaurants() {
   const latitude = localStorage.getItem("latitude");
   const longitude = localStorage.getItem("longitude");
@@ -55,7 +66,7 @@ async function getRestaurants() {
         <div class="card-info">
           <h2>${restaurant.name}</h2>
           <img src="images/location-icon.svg" alt="Plats" class="icon-small">
-          <p>${Number(restaurant.distance_in_km).toFixed(1)} km • ${restaurant.avg_lunch_pricing} kr</p>
+          <p>${Number(restaurant.distance_in_km).toFixed(1)} km • ${getPriceLevel(restaurant.avg_lunch_pricing)}</p>
         </div>
       `;
 
