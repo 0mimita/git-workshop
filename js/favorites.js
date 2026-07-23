@@ -104,11 +104,3 @@ function updateSaveButton() {
             });
         }
     });
-
-const backBtn = document.getElementById("back-button");
-
-if (backBtn) {
-    backBtn.addEventListener("click", () => {
-        window.history.back();
-    });
-};
