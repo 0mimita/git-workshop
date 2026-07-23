@@ -379,6 +379,10 @@ select {
     flex: 1;
 }
 
+.card-info h2 {
+    margin-bottom: 12px;
+}
+
 .remove-favorite-button:hover {
     transform: scale(1.15);
     
@@ -546,4 +550,12 @@ select {
 
 .tooltip:hover .tooltip-text {
     display: block;
+}
+
+#sort-select {
+    margin-bottom: 20px;
+}
+
+#restaurants-container {
+    margin-top: 10px;
 }

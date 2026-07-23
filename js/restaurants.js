@@ -1,12 +1,12 @@
 function getPriceLevel(price) {
-    price = Number(price);
-    if (price < 100) {
-        return "$";
-    } else if (price <= 150) {
-        return "$$";
-    } else {
-        return "$$$";
-    }
+  price = Number(price);
+  if (price < 100) {
+    return "$";
+  } else if (price <= 150) {
+    return "$$";
+  } else {
+    return "$$$";
+  }
 }
 
 async function getRestaurants() {
@@ -16,6 +16,8 @@ async function getRestaurants() {
   const priceRanges = JSON.parse(localStorage.getItem("price_ranges")) || [];
   const maxDistance = Number(localStorage.getItem("distance")) || 5;
   const container = document.getElementById("restaurants-container");
+  const sortSelect = document.getElementById("sort-select");
+  const sortBy = sortSelect ? sortSelect.value : "";
 
   container.innerHTML = "";
 
@@ -40,7 +42,8 @@ async function getRestaurants() {
 
         if (isNaN(price)) return true;
         if (priceRanges.includes("$") && price < 100) return true;
-        if (priceRanges.includes("$$") && price >= 100 && price <= 150) return true;
+        if (priceRanges.includes("$$") && price >= 100 && price <= 150)
+          return true;
         if (priceRanges.includes("$$$") && price > 150) return true;
 
         return false;
@@ -48,10 +51,26 @@ async function getRestaurants() {
     }
 
     restaurants = restaurants.filter((restaurant) => {
-    return Number(restaurant.distance_in_km) <= maxDistance;
+      return Number(restaurant.distance_in_km) <= maxDistance;
     });
 
-    restaurants.sort((a, b) => parseFloat(a.distance_in_km) - parseFloat(b.distance_in_km));
+    if (sortBy === "priceAsc") {
+      restaurants.sort(
+        (a, b) => Number(a.avg_lunch_pricing) - Number(b.avg_lunch_pricing),
+      );
+    } else if (sortBy === "priceDesc") {
+      restaurants.sort(
+        (a, b) => Number(b.avg_lunch_pricing) - Number(a.avg_lunch_pricing),
+      );
+    } else if (sortBy === "rating") {
+      restaurants.sort((a, b) => Number(b.rating) - Number(a.rating));
+    } else if (sortBy === "reviews") {
+      restaurants.sort((a, b) => Number(b.num_reviews) - Number(a.num_reviews));
+    } else {
+      restaurants.sort(
+        (a, b) => parseFloat(a.distance_in_km) - parseFloat(b.distance_in_km),
+      );
+    }
 
     if (restaurants.length === 0) {
       container.innerHTML = "<p>Inga restauranger matchar dina val.</p>";
@@ -73,7 +92,6 @@ async function getRestaurants() {
       card.addEventListener("click", () => {
         localStorage.setItem("selectedRestaurant", JSON.stringify(restaurant));
         window.location.href = "restaurant.html";
-        
       });
 
       container.appendChild(card);
@@ -86,9 +104,15 @@ async function getRestaurants() {
 
 getRestaurants();
 
+const sortSelect = document.getElementById("sort-select");
+
+if (sortSelect) {
+  sortSelect.addEventListener("change", getRestaurants);
+}
+
 const backBtn = document.getElementById("back-button");
-  if (backBtn) {
-    backBtn.addEventListener("click", () => {
-      window.history.back();
-    });
-  }
+if (backBtn) {
+  backBtn.addEventListener("click", () => {
+    window.history.back();
+  });
+}
