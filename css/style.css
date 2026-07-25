@@ -407,12 +407,10 @@ select {
 .restaurant-title {
     width: 140px;
     height: 18px;
-
-    background-color: #d9d9d9;
-
     border-radius: 8px;
-
     margin-bottom: 10px;
+    font-size: 22px;
+    font-weight: 600;
 }
 
 .restaurant-title.large {
