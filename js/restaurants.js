@@ -94,7 +94,7 @@ async function getRestaurants() {
         <div class="card-info">
           <h2>${restaurant.name}</h2>
           <img src="images/location-icon.svg" alt="Plats" class="icon-small">
-          <p>${Number(restaurant.distance_in_km).toFixed(1)} km • ${getPriceLevel(restaurant.avg_lunch_pricing)}</p>
+          <p>${Number(restaurant.distance_in_km).toFixed(1)} km • ${getPriceLevel(restaurant.avg_lunch_pricing)} • ${Number(restaurant.rating).toFixed(1)} • ${restaurant.num_reviews} omdömen</p>
         </div>
       `;
 

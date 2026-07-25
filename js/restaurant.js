@@ -23,7 +23,7 @@ document.getElementById("restaurant-info").textContent =
 `${selectedRestaurant.distance_in_km.toFixed(1)} km • ${getPriceLevel(selectedRestaurant.avg_lunch_pricing)}`;
 
 document.getElementById("restaurant-rating").textContent =
-`${selectedRestaurant.rating} (${selectedRestaurant.num_reviews} omdömen)`;
+`${parseFloat(selectedRestaurant.rating)} (${selectedRestaurant.num_reviews} omdömen)`;
 
 document.getElementById("restaurant-type").textContent =
 selectedRestaurant.sub_type.replaceAll("_"," ");
