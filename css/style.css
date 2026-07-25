@@ -575,3 +575,8 @@ select {
         transform: rotate(360deg);
     }
 }
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+}
