@@ -16,6 +16,12 @@ async function getRestaurants() {
   const priceRanges = JSON.parse(localStorage.getItem("price_ranges")) || [];
   const maxDistance = Number(localStorage.getItem("distance")) || 5;
   const container = document.getElementById("restaurants-container");
+
+  const loader = document.getElementById("loader");
+
+    loader.style.display = "block";
+    container.style.display = "none";
+
   const sortSelect = document.getElementById("sort-select");
   const sortBy = sortSelect ? sortSelect.value : "";
 
@@ -76,6 +82,9 @@ async function getRestaurants() {
       container.innerHTML = "<p>Inga restauranger matchar dina val.</p>";
       return;
     }
+
+    loader.style.display = "none";
+    container.style.display = "block";
 
     restaurants.forEach((restaurant) => {
       const card = document.createElement("div");
