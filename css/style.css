@@ -359,7 +359,7 @@ select {
     align-items: center;
     background-color: #f2d6d6;
     padding: 16px;
-
+    cursor: pointer;
     justify-content: space-between;
     border-radius: 18px;
     margin-bottom: 14px;
@@ -577,4 +577,18 @@ select {
 .logo-link {
     text-decoration: none;
     color: inherit;
+}
+
+button {
+    transition: 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+button:active {
+    transform: scale(0.97);
 }
