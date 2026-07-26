@@ -86,6 +86,19 @@ async function getRestaurants() {
     loader.style.display = "none";
     container.style.display = "block";
 
+    const shouldRandomize = localStorage.getItem("shouldRandomize");
+
+    if (shouldRandomize === "true" && restaurants.length > 0) {
+      localStorage.removeItem("shouldRandomize");
+      
+      const randomIndex = Math.floor(Math.random() * restaurants.length);
+      const randomRestaurant = restaurants[randomIndex];
+
+        localStorage.setItem("selectedRestaurant", JSON.stringify(randomRestaurant));
+        window.location.href = "restaurant.html";
+        return;
+    }
+
     restaurants.forEach((restaurant) => {
       const card = document.createElement("div");
       card.className = "restaurant-card";
