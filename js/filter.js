@@ -50,3 +50,12 @@ resultButton.addEventListener("click", (event) => {
     localStorage.setItem("sub_types", JSON.stringify(subTypes));
     localStorage.setItem("price_ranges", JSON.stringify(priceRanges));
 });
+
+const randomBtn = document.getElementById("random-btn");
+
+if (randomBtn) {
+    randomBtn.addEventListener("click", () => {
+        localStorage.setItem("shouldRandomize", "true");
+        window.location.href = "result.html";
+    });
+}
