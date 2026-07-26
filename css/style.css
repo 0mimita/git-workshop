@@ -318,8 +318,8 @@ header h1 {
 }
 
 .filter-grid button.selected {
-    background-color: #f9c4d9; 
-    border: 2px solid #ffffff; 
+    background-color: #9e8787;
+    border: 2px solid #f5eeee; 
 }
 
 select {
