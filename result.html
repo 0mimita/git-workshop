@@ -1,48 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LunchFinder</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-</head>
-<body>
-    
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+  </head>
+  <body>
     <div class="container">
+      <header>
+        <button id="back-button" class="back-navigation" title="Gå tillbaka">
+          <img src="images/arrow-icon.svg" alt="Bakåt" />
+        </button>
 
-        <header>
-            <button id="back-button" class="back-navigation" title="Gå tillbaka">
-                <img src="images/arrow-icon.svg" alt="Bakåt">
-            </button>
+        <h1>Lunchställen nära dig</h1>
+        <a href="favorites.html" class="favorite-icon"> ♡ </a>
+      </header>
 
-            <h1>Lunchställen nära dig</h1>
-            <a href="favorites.html" class="favorite-icon">
-                ♡
-            </a>
-        </header>
+      <main>
+        <section class="map-selection">
+          <div id="map"></div>
+        </section>
 
-        <main>
-            <section class="map-selection">
-            <div id="map"></div>
-            </section>
+        <section class="bottom-sheet">
+          <h2>Närmaste lunchställena</h2>
 
-            <section class="bottom-sheet">
-                <h2>Närmaste lunchställena</h2>
-                
-                <div id="restaurants-container"></div>
+          <label for="sort-select">Sortera efter:</label>
+          <select id="sort-select">
+            <option value="" selected disabled>Välj sortering</option>
+            <option value="priceAsc">Billigast</option>
+            <option value="priceDesc">Dyrast</option>
+            <option value="rating">Högst betyg</option>
+            <option value="reviews">Flest omdömen</option>
+          </select>
 
-            </section>
-        </main>
+          <div id="loader" class="loader" style="display: none;"></div>
+
+          <div id="restaurants-container"></div>
+        </section>
+      </main>
     </div>
 
-<script src="./js/storage.js"></script>
-<script src="./js/favorites.js"></script>
-<script src="./js/restaurants.js"></script>
+    <script src="./js/storage.js"></script>
+    <script src="./js/favorites.js"></script>
+    <script src="./js/restaurants.js"></script>
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
-<script src="./js/map.js"></script>
-
-</body>
+    <script src="./js/map.js"></script>
+  </body>
 </html>

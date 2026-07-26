@@ -1,6 +1,10 @@
 const locationButton = document.querySelector(".location-button");
+const loader = document.getElementById("loader");
 
 locationButton.addEventListener("click", () => {
+    loader.style.display = "block";
+    locationButton.disabled = true;
+
     navigator.geolocation.getCurrentPosition((position) => {
 
         localStorage.setItem(
@@ -22,7 +26,8 @@ locationButton.addEventListener("click", () => {
         },
 
         (error) => {
-
+            loader.style.display = "none";
+            locationButton.disabled = false;
             console.log(error);
 
         },
@@ -33,4 +38,9 @@ locationButton.addEventListener("click", () => {
         }
 
     );
+});
+
+window.addEventListener("pageshow", () => {
+    loader.style.display = "none";
+    locationButton.disabled = false;
 });
