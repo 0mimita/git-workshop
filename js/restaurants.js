@@ -103,6 +103,8 @@ async function getRestaurants() {
       const card = document.createElement("div");
       card.className = "restaurant-card";
 
+      const walkTimeMinutes = Math.round((restaurant.distance_in_km / 5) * 60);
+      
       card.innerHTML = `
         <div class="card-info">
           <h2>${restaurant.name}</h2>
