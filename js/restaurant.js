@@ -65,3 +65,18 @@ if (navBtn) {
     }
     });
 }
+
+const websiteBtn = document.getElementById("restaurant-website");
+const websiteUrl = selectedRestaurant.website || selectedRestaurant.url;
+
+if (websiteBtn) {
+    if (websiteUrl) {
+       
+        if (!erbsiteUrl.startsWith("http://") && !websiteUrl.startsWith("https://")) {
+            websiteUrl = "https://" + websiteUrl;
+        }
+        websiteBtn.hrf = websiteUrl;
+        websiteBtn.target = "_blank";
+        websiteBtn.rel = "noopener noreferrer";
+    }
+}
