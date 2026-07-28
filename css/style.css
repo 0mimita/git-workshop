@@ -630,6 +630,35 @@ select {
 .website-button:hover {
     transform: translateY(-2px);
 }
+.quick-buttons {
+    gap: 12px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.quick-btn {
+    color: white;
+    background-color: #6a5a5a;
+    border: none;
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    font-size: 12px;
+    transition: 0.2s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.quick-btn:hover {
+    transform: translateY(-2px);
+    background-color: #514747;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.quick-btn:active {
+    transform: scale(0.97);
+}
+
 
 button {
     transition: 0.2s;
