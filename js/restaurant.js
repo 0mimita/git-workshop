@@ -72,7 +72,7 @@ const websiteUrl = selectedRestaurant.website || selectedRestaurant.url;
 if (websiteBtn) {
     if (websiteUrl) {
        
-        if (!erbsiteUrl.startsWith("http://") && !websiteUrl.startsWith("https://")) {
+        if (!websiteUrl.startsWith("http://") && !websiteUrl.startsWith("https://")) {
             websiteUrl = "https://" + websiteUrl;
         }
         websiteBtn.hrf = websiteUrl;
