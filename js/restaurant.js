@@ -19,7 +19,7 @@ document.getElementById("restaurant-name").textContent = selectedRestaurant.name
 
 document.getElementById("restaurant-title").textContent = selectedRestaurant.description;
 
-const walkTimeMinutes = Math.round((selectedRestaurant.distance_in_km / 5) * 60)
+const walkTimeMinutes = Math.round(((selectedRestaurant.distance_in_km * 1.5) / 5) * 60)
 
 document.getElementById("restaurant-info").textContent =
 `${selectedRestaurant.distance_in_km.toFixed(1)} km (ca ${walkTimeMinutes} min promenad) • ${getPriceLevel(selectedRestaurant.avg_lunch_pricing)}`;
