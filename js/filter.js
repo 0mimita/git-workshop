@@ -59,3 +59,32 @@ if (randomBtn) {
         window.location.href = "result.html";
     });
 }
+
+function prepareQuickFilter() {
+    const currentDistance = localStorage.getItem("distance");
+    if (!currentDistance) {
+        localStorage.setItem("distance", "2");
+    }
+}
+
+document.getElementById("quick-asian")?.addEventListener("click", () => {
+    prepareQuickFilter();
+    localStorage.setItem("sub_types", JSON.stringify(["ASIAN"]));
+    localStorage.setItem("price_ranges", JSON.stringify([]));
+    window.location.href = "result.html";
+
+});
+
+document.getElementById("quick-cheap")?.addEventListener("click", () => {
+    prepareQuickFilter();
+    localStorage.setItem("sub_types", JSON.stringify([]));
+    localStorage.setItem("price_ranges", JSON.stringify([$]));
+    window.location.href = "result.html";
+});
+
+document.getElementById("quick-near")?.addEventListener("click", () => {
+    localStorage.setItem("distance", "0.5");
+    localStorage.setItem("sub_types", JSON.stringify([]));
+    localStorage.setItem("price_ranges", JSON.stringify([]));
+    window.location.href = "result.html";
+});
