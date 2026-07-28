@@ -67,9 +67,9 @@ function prepareQuickFilter() {
     }
 }
 
-document.getElementById("quick-asian")?.addEventListener("click", () => {
+document.getElementById("quick-fastfood")?.addEventListener("click", () => {
     prepareQuickFilter();
-    localStorage.setItem("sub_types", JSON.stringify(["ASIAN"]));
+    localStorage.setItem("sub_types", JSON.stringify(["BURGERS", "PIZZA"]));
     localStorage.setItem("price_ranges", JSON.stringify([]));
     window.location.href = "result.html";
 
@@ -78,12 +78,12 @@ document.getElementById("quick-asian")?.addEventListener("click", () => {
 document.getElementById("quick-cheap")?.addEventListener("click", () => {
     prepareQuickFilter();
     localStorage.setItem("sub_types", JSON.stringify([]));
-    localStorage.setItem("price_ranges", JSON.stringify([$]));
+    localStorage.setItem("price_ranges", JSON.stringify(["$"]));
     window.location.href = "result.html";
 });
 
 document.getElementById("quick-near")?.addEventListener("click", () => {
-    localStorage.setItem("distance", "0.5");
+    localStorage.setItem("distance", "1.0");
     localStorage.setItem("sub_types", JSON.stringify([]));
     localStorage.setItem("price_ranges", JSON.stringify([]));
     window.location.href = "result.html";
