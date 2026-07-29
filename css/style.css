@@ -510,6 +510,8 @@ select {
 
 .result-button {
     width: 100%;
+    font-size: 1.1rem;
+    font-weight: bold;
 }
 
 
@@ -605,7 +607,6 @@ select {
 
 .random-btn {
     font-size: 1rem;
-    font-weight: bold;
     background-color: #6f5d5d;
     color: white;
     border-radius: 12px;
