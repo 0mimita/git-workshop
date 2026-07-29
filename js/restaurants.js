@@ -81,9 +81,15 @@ async function getRestaurants() {
     if (restaurants.length === 0) {
       loader.style.display = "none";
       container.style.display = "block";
-      container.innerHTML =
-        '<p class="no-results">Inga restauranger matchar dina sökningar.</p>';
+      container.innerHTML = `
+      <div class="no-results-box">
+        <p class="no-results">Inga restauranger matchar dina filter.</p>
+        <a href="filter.html" class="website-button">Ändra mina filter</a> 
+        </div>
+        `;
+
       return;
+
     }
 
     loader.style.display = "none";
