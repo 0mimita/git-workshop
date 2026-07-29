@@ -80,6 +80,7 @@ document.getElementById("quick-cheap")?.addEventListener("click", () => {
     localStorage.setItem("sub_types", JSON.stringify([]));
     localStorage.setItem("price_ranges", JSON.stringify(["$"]));
     window.location.href = "result.html";
+
 });
 
 document.getElementById("quick-near")?.addEventListener("click", () => {
@@ -87,4 +88,23 @@ document.getElementById("quick-near")?.addEventListener("click", () => {
     localStorage.setItem("sub_types", JSON.stringify([]));
     localStorage.setItem("price_ranges", JSON.stringify([]));
     window.location.href = "result.html";
+
 });
+
+const clearBtn = document.getElementById("clear-filters-btn");
+if (clearBtn) {
+    clearBtn.addEventListener("click", () => {
+        localStorage.removeItem("distance");
+        localStorage.removeItem("sub_types");
+        localStorage.removeItem("price_ranges");
+
+        document.querySelectorAll(".filter-grid button").forEach(btn => {
+            btn.classList.remove("selected");
+        
+            });
+        document.querySelectorAll("select").forEach(select => {
+            select.selectedIndex = 0;
+        });
+       
+    });
+}
