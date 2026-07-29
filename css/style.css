@@ -489,6 +489,29 @@ select {
     }
 
 }
+.secondary-btn-wrapper {
+    gap: 10px;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+#clear-filters-btn,
+#random-btn {
+    padding: 12px 10px;
+    display: flex;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+    width: auto;
+    margin-top: 15px;
+}
+
+.result-button {
+    width: 100%;
+}
+
 
 .favorite-icon {
     width: 28px;
