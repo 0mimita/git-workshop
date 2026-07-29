@@ -610,6 +610,23 @@ select {
     transform: translateY(0);
 }
 
+.clear-btn {
+    padding: 10px 16px;
+    border: 2px solid #6a5a5a;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: #6a5a5a;
+    transition: 0.2s;
+    font-size: 0.9rem;
+}
+
+.clear-btn:hover {
+    color: white;
+    background-color: #6a5a5a;
+}
+
 .website-button {
     display: inline-block;
     color: #5e4c4c;
