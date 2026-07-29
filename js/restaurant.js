@@ -9,11 +9,37 @@ function getPriceLevel(price) {
     }
 }
 
+function getCategoryImage(subType) {
+    switch (subType) {
+        case "LOCAL":
+            return "assets/husman.jpg";
+        case "ASIAN":
+            return "assets/asiatiskt.jpg";
+        case "PIZZA":
+            return "assets/pizza.jpg";
+        case "BURGERS":
+            return "assets/burgare.jpg";
+        case "MEDITERRANEAN":
+            return "assets/medelhavs.jpg";
+        case "PASTRIES":
+            return "assets/bakverk.jpg";
+        case "LATIN":
+            return "assets/latin.jpg";
+        case "A_LA_CARTE":
+            return "assets/carte.jpg";
+        default:
+            return "";
+    }
+}
+
 const selectedRestaurant =JSON.parse(
     localStorage.getItem("selectedRestaurant")
 );
 
 console.log(selectedRestaurant);
+
+const banner = document.querySelector(".restaurant-banner");
+banner.style.backgroundImage = `url(${getCategoryImage(selectedRestaurant.sub_type)})`;
 
 document.getElementById("restaurant-name").textContent = selectedRestaurant.name;
 

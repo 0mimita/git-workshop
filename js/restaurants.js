@@ -19,8 +19,8 @@ async function getRestaurants() {
 
   const loader = document.getElementById("loader");
 
-    loader.style.display = "block";
-    container.style.display = "none";
+  loader.style.display = "block";
+  container.style.display = "none";
 
   const sortSelect = document.getElementById("sort-select");
   const sortBy = sortSelect ? sortSelect.value : "";
@@ -79,7 +79,10 @@ async function getRestaurants() {
     }
 
     if (restaurants.length === 0) {
-      container.innerHTML = "<p>Inga restauranger matchar dina val.</p>";
+      loader.style.display = "none";
+      container.style.display = "block";
+      container.innerHTML =
+        '<p class="no-results">Inga restauranger matchar dina sökningar.</p>';
       return;
     }
 
@@ -90,13 +93,16 @@ async function getRestaurants() {
 
     if (shouldRandomize === "true" && restaurants.length > 0) {
       localStorage.removeItem("shouldRandomize");
-      
+
       const randomIndex = Math.floor(Math.random() * restaurants.length);
       const randomRestaurant = restaurants[randomIndex];
 
-        localStorage.setItem("selectedRestaurant", JSON.stringify(randomRestaurant));
-        window.location.href = "restaurant.html";
-        return;
+      localStorage.setItem(
+        "selectedRestaurant",
+        JSON.stringify(randomRestaurant),
+      );
+      window.location.href = "restaurant.html";
+      return;
     }
 
     restaurants.forEach((restaurant) => {
@@ -104,7 +110,7 @@ async function getRestaurants() {
       card.className = "restaurant-card";
 
       const walkTimeMinutes = Math.round((restaurant.distance_in_km / 5) * 60);
-      
+
       card.innerHTML = `
         <div class="card-info">
           <h2>${restaurant.name}</h2>
@@ -120,6 +126,7 @@ async function getRestaurants() {
 
       container.appendChild(card);
     });
+    
   } catch (error) {
     console.error(error);
     container.innerHTML = "<p>Kunde inte hämta restauranger.</p>";
