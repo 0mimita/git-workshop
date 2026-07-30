@@ -4,6 +4,19 @@ const buttons = document.querySelectorAll(".filter-grid button");
 
 const distanceFilter = document.getElementById("distance-filter");
 
+document.addEventListener("DOMContentLoaded", () => {
+   
+    const savedSubTypes = JSON.parse(localStorage.getItem("sub_types")) || [];
+    const savedPriceRanges = JSON.parse(localStorage.getItem("price_ranges")) || [];
+    
+   buttons.forEach ((btn) => {
+    const value = btn.dataset.value || btn.innerText.trim();
+    if (savedSubTypes.includes(value) || savedPriceRanges.includes(value)) {
+        btn.classList.add("selected");
+    }
+   });
+});
+
 if (distanceFilter) {
   const savedDistance = localStorage.getItem("distance");
 
