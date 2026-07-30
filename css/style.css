@@ -194,7 +194,7 @@ header h1 {
 
     padding: 24px;
 
-    border-radius: 24px 24px 0 0;
+    border-radius: 24px;
 
     display: flex;
     flex-direction: column;
