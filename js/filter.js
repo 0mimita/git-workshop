@@ -90,3 +90,11 @@ if (clearBtn) {
        
     });
 }
+
+const tooltip = document.querySelector(".tooltip");
+
+if (tooltip) {
+    tooltip.addEventListener("click", () => {
+        tooltip.classList.toggle("show");
+    });
+}

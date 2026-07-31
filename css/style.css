@@ -585,8 +585,7 @@ select {
 }
 
 .tooltip:hover .tooltip-text,
-.tooltip:focus .tooltip-text,
-.tooltip:focus-within .tooltip-text {
+.tooltip.show .tooltip-text {
     display: block;
 }
 
