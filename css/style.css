@@ -110,6 +110,8 @@ header h1 {
     height: auto;
     width: 120px;
     margin-bottom: 20px;
+    transform: translateY(-20px);
+    
 }
 
 .plats-kort {
