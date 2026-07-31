@@ -94,12 +94,7 @@ if (clearBtn) {
 const tooltip = document.querySelector(".tooltip");
 
 if (tooltip) {
-    tooltip.addEventListener("click", (event) => {
-        event.stopPropagation();
+    tooltip.addEventListener("click", () => {
         tooltip.classList.toggle("show");
-    });
-
-    document.addEventListener("click", () => {
-        tooltip.classList.remove("show");
     });
 }
