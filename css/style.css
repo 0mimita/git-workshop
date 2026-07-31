@@ -584,6 +584,7 @@ select {
     white-space: nowrap;
 }
 
+.tooltip:hover .tooltip-text,
 .tooltip:focus .tooltip-text,
 .tooltip:focus-within .tooltip-text {
     display: block;
