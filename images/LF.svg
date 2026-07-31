@@ -1,32 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.64 20.26">
+<svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 29.33 33.45">
   <defs>
     <style>
       .cls-1 {
-        font-size: 1px;
+        font-size: 3.01px;
       }
 
-      .cls-1, .cls-2 {
+      .cls-1, .cls-2, .cls-3, .cls-4 {
+        font-family: SavoyeLetPlain, 'Savoye LET';
+      }
+
+      .cls-1, .cls-4 {
         fill: #231f20;
-        font-family: Zapfino, Zapfino;
-      }
-
-      .cls-3 {
-        fill: none;
-        stroke: #231f20;
-        stroke-miterlimit: 10;
-        stroke-width: .25px;
       }
 
       .cls-2 {
-        font-size: 3px;
+        font-size: 16.8px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #6f5d5d;
+      }
+
+      .cls-3 {
+        font-size: 15.54px;
+      }
+
+      .cls-4 {
+        font-size: 2.09px;
+      }
+
+      .cls-5 {
+        fill: none;
+        stroke: #684f57;
+        stroke-miterlimit: 10;
+        stroke-width: .75px;
       }
     </style>
   </defs>
-  <text class="cls-2" transform="translate(.81 5.17)"><tspan x="0" y="0">L</tspan></text>
-  <text class="cls-2" transform="translate(3.67 10.85)"><tspan x="0" y="0">F</tspan></text>
-  <text class="cls-1" transform="translate(1.91 6.9)"><tspan x="0" y="0">u</tspan><tspan x="0" y="1.2">n</tspan><tspan x="0" y="2.4">c</tspan><tspan x="0" y="3.6">h</tspan></text>
-  <text class="cls-1" transform="translate(6.18 2.14)"><tspan x="0" y="0">r</tspan><tspan x="0" y="1.2">e</tspan><tspan x="0" y="2.4">d</tspan><tspan x="0" y="3.6">n</tspan><tspan x="0" y="4.8">i</tspan></text>
-  <text/>
-  <rect class="cls-3" x=".12" y=".12" width="8.6" height="11.79"/>
+  <text class="cls-3" transform="translate(3.59 15.97) scale(1.21 1)"><tspan x="0" y="0">L</tspan></text>
+  <text class="cls-2" transform="translate(14.67 26.86) scale(1.11 1)"><tspan x="0" y="0">F</tspan></text>
+  <text class="cls-1" transform="translate(8.18 18.69) scale(1.66 1)"><tspan x="0" y="0">u</tspan><tspan x="0" y="3.62">n</tspan><tspan x="0" y="7.23">c</tspan><tspan x="0" y="10.84">h</tspan></text>
+  <text class="cls-4" transform="translate(19.8 3.97) scale(2.4 1)"><tspan x="0" y="0">r</tspan><tspan x="0" y="2.5">e</tspan><tspan x="0" y="5.01">d</tspan><tspan x="0" y="7.51">n</tspan><tspan x="0" y="10.01">i</tspan></text>
+  <rect class="cls-5" x=".38" y=".38" width="28.58" height="32.7"/>
 </svg>
