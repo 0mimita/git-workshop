@@ -73,37 +73,6 @@ if (randomBtn) {
     });
 }
 
-function prepareQuickFilter() {
-    const currentDistance = localStorage.getItem("distance");
-    if (!currentDistance) {
-        localStorage.setItem("distance", "2");
-    }
-}
-
-document.getElementById("quick-fastfood")?.addEventListener("click", () => {
-    prepareQuickFilter();
-    localStorage.setItem("sub_types", JSON.stringify(["BURGERS", "PIZZA"]));
-    localStorage.setItem("price_ranges", JSON.stringify([]));
-    window.location.href = "result.html";
-
-});
-
-document.getElementById("quick-cheap")?.addEventListener("click", () => {
-    prepareQuickFilter();
-    localStorage.setItem("sub_types", JSON.stringify([]));
-    localStorage.setItem("price_ranges", JSON.stringify(["$"]));
-    window.location.href = "result.html";
-
-});
-
-document.getElementById("quick-near")?.addEventListener("click", () => {
-    localStorage.setItem("distance", "1.0");
-    localStorage.setItem("sub_types", JSON.stringify([]));
-    localStorage.setItem("price_ranges", JSON.stringify([]));
-    window.location.href = "result.html";
-
-});
-
 const clearBtn = document.getElementById("clear-filters-btn");
 if (clearBtn) {
     clearBtn.addEventListener("click", () => {
