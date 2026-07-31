@@ -101,7 +101,7 @@ if (websiteBtn) {
         if (!websiteUrl.startsWith("http://") && !websiteUrl.startsWith("https://")) {
             websiteUrl = "https://" + websiteUrl;
         }
-        websiteBtn.hrf = websiteUrl;
+        websiteBtn.href = websiteUrl;
         websiteBtn.target = "_blank";
         websiteBtn.rel = "noopener noreferrer";
     }
