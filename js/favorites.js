@@ -115,3 +115,15 @@ function updateSaveButton() {
             });
         }
     });
+
+const favoritesBackBtn = document.getElementById("back-button");
+
+if (favoritesBackBtn) {
+    favoritesBackBtn.addEventListener("click", () => {
+        if (localStorage.getItem("selectedRestaurant")) {
+            window.location.href = "restaurant.html";
+        } else {
+            window.location.href = "result.html";
+        }
+    });
+}
