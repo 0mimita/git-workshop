@@ -20,7 +20,18 @@ function toggleFavorite(restaurant) {
         favorites.splice(index, 1);
     } else {
         favorites.push(restaurant);
+
+        const toast = document.getElementById("favorite-toast");
+
+        if (toast) {
+            toast.style.display = "block";
+
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 3000);
+        }
     }
+
     saveFavorites(favorites);
     updateSaveButton();
     renderFavorites();

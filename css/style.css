@@ -701,3 +701,25 @@ button:hover {
 button:active {
     transform: scale(0.97);
 }
+
+.favorite-toast {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: #6a5a5a;
+    color: white;
+
+    padding: 14px 20px;
+    border-radius: 12px;
+
+    display: none;
+    z-index: 9999;
+}
+
+.favorite-toast a {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
+}
