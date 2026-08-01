@@ -71,7 +71,7 @@ selectedRestaurant.vegetarian_option === "Y"
 
 const backBtn = document.getElementById("back-button");
 backBtn.addEventListener("click", () => {
-    window.history.back();
+    window.location.href = "result.html";
 });
 
 const navBtn = document.querySelector(".navigation-button");

@@ -1,35 +1,30 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="sv">
-<head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <title>Favoriter</title>
-     <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-     <div class="container">
-          <header>
-               <h1>Sparade restauranger</h1>
-          </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Favoriter</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Sparade restauranger</h1>
+    </header>
 
-          <main>
-               <section class="bottom-sheet">
-                    <h2>Sparade lunchställen</h2>
+    <div class="container">
+      <main>
+        <section class="bottom-sheet">
+          <h2>Sparade lunchställen</h2>
 
-                    <div id="favorites-container"></div>
+          <div id="favorites-container"></div>
 
-                    <a href="filter.html">
-                         <button class="result-button" id="back-button">
-                              Gå tillbaka
-                         </button>
-                    </a>
+          <button class="result-button" id="back-button">Gå tillbaka</button>
+        </section>
+      </main>
+    </div>
 
-               </section>
-          </main>
-     </div>
+    <script src="./js/storage.js"></script>
 
-<script src="./js/storage.js"></script>
-
-<script src="./js/favorites.js"></script>
-</body>
+    <script src="./js/favorites.js"></script>
+  </body>
 </html>

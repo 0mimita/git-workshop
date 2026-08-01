@@ -150,6 +150,6 @@ if (sortSelect) {
 const backBtn = document.getElementById("back-button");
 if (backBtn) {
   backBtn.addEventListener("click", () => {
-    window.history.back();
-  });
+    window.location.href = "filter.html";
+});
 }
