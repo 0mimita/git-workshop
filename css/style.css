@@ -199,6 +199,9 @@ header h1 {
     border-radius: 24px;
     text-align: center;
     box-shadow: none;
+    align-items: center;
+    flex-direction: column;
+    display: flex;
 }
 
 .feature-icon {
